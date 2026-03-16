@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p><a class="btn btn-primary" href="{{ url_for('admin_add') }}">Add New Fingerprint</a></p>
+<table class="table">
+    <thead><tr><th>ID</th><th>Name</th><th>Address</th><th>Created</th><th>Action</th></tr></thead>
+    <tbody>
+    {% for fp in fingerprints %}
+        <tr>
+            <td>{{ fp.id }}</td>
+            <td>{{ fp.name }}</td>
+            <td>{{ fp.address }}</td>
+            <td>{{ fp.created_at }}</td>
+            <td><a href="{{ url_for('admin_delete', fid=fp.id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

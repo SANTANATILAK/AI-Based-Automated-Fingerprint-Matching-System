@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fingerprint Matcher</title>
+    <!--
+        This page contains a simple form for uploading a crime scene
+        fingerprint image.  Any security hardening must be implemented
+        on the server side, including:
+            * enforcing HTTPS
+            * validating/escaping file names
+            * restricting file types (e.g. image/*)
+            * scanning uploads for malware/poisoned content
+            * applying CSRF protections (token inserted by back end)
+    -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        form { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <h2>Upload Crime Scene Fingerprint</h2>
+    <!-- Add server-generated CSRF token here, e.g. {{ csrf_token() }} -->
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="fileInput">Select an image file:</label>
+        <input id="fileInput" type="file" name="file" accept="image/*" required>
+        <button type="submit">Match</button>
+    </form>
+</body>
+</html>
